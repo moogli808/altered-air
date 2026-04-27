@@ -172,20 +172,10 @@ section {
   .grid-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-@media (min-width: 768px) {
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
-}
-
 /* ── Background helpers ── */
 .bg-gray { background: var(--gray-50); }
 .bg-navy { background: var(--navy); color: var(--white); }
 .bg-navy h1, .bg-navy h2, .bg-navy h3, .bg-navy p { color: var(--white); }
-.bg-orange { background: var(--orange); color: var(--white); }
 
 /* ── Text helpers ── */
 .text-center { text-align: center; }
@@ -314,10 +304,6 @@ section {
   color: var(--orange);
   font-weight: 600;
   font-size: 0.9rem;
-}
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
 }
 
 /* ── Feature list ── */
