@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<Layout
+  title="Thank You — Altered Air | (760) 594-1125"
+  description="Thank you for contacting Altered Air. Someone will be in touch within 1 business day. For urgent needs, call (760) 594-1125 now."
+  canonical="/contact-success"
+>
+  <section class="page-hero" style="text-align:center;">
+    <div class="container">
+      <div class="success-icon" aria-hidden="true">&#10003;</div>
+      <h1>Thank You — We Got Your Message</h1>
+      <p>
+        Someone from Altered Air will be in touch within 1 business day.
+        John Rigo handles inquiries personally — you will hear from him directly,
+        not from a call center or automated system.
+      </p>
+      <p style="margin-top:1rem;">
+        <strong>Need something urgently?</strong> Do not wait for a callback —
+        call us right now.
+      </p>
+      <a href="tel:+17605941125" class="phone-link" style="margin-top:1rem;">
+        &#128222; Call (760) 594-1125
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="success-cards">
+        <div class="card">
+          <h3>&#128680; AC Emergency?</h3>
+          <p>
+            If your air conditioning has failed and you are in summer heat, do not wait for a
+            callback. Call <a href="tel:+17605941125">(760) 594-1125</a> immediately —
+            emergency lines are answered 24/7.
+          </p>
+        </div>
+        <div class="card">
+          <h3>&#10052; Refrigeration Down?</h3>
+          <p>
+            If a walk-in cooler or commercial refrigerator has failed, inventory is at risk by
+            the hour. Call <a href="tel:+17605941125">(760) 594-1125</a> now — do not wait
+            for a form response when time matters.
+          </p>
+        </div>
+        <div class="card">
+          <h3>&#128338; What Happens Next</h3>
+          <p>
+            For non-emergency requests, expect a call or message back within 1 business day.
+            John will confirm your service area, ask a few questions about your system, and
+            get a time on the calendar that works for you.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="/" class="btn-secondary">&#8592; Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    heading="Questions? Call John Rigo Directly"
+    subtext="Altered Air — 1009 E Narramore Ave, Buckeye, AZ 85326 — (760) 594-1125. Same-day AC repair and 24/7 emergency service throughout the West Valley."
+  />
+</Layout>
+
+<style>
+  .success-icon {
+    width: 4rem;
+    height: 4rem;
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+  }
+  .success-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    .success-cards { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
