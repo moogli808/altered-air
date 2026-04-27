@@ -1,0 +1,76 @@
+---
+export interface Props {
+  heading?: string;
+  subtext?: string;
+  emergency?: boolean;
+}
+
+const {
+  heading = 'Ready for Fast, Reliable Service?',
+  subtext = 'Call John Rigo at Altered Air — same-day AC repair and 24/7 emergency refrigeration service across the West Valley.',
+  emergency = false,
+} = Astro.props;
+---
+
+<section class={`cta-section${emergency ? ' cta-emergency' : ''}`}>
+  <div class="container">
+    {emergency && (
+      <p class="emergency-label">&#128680; Emergency Line — Available 24/7</p>
+    )}
+    <h2>{heading}</h2>
+    <p>{subtext}</p>
+    <div class="cta-buttons">
+      <a href="tel:+17605941125" class="btn-primary btn-lg">
+        &#128222; Call (760) 594-1125
+      </a>
+      <a href="/contact" class="btn-outline-white btn-lg">
+        Get a Free Quote
+      </a>
+    </div>
+    <p class="cta-nap">
+      Altered Air &bull; 1009 E Narramore Ave, Buckeye, AZ 85326
+    </p>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: linear-gradient(135deg, #071524, #0d2137);
+    color: #ffffff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+  .cta-emergency {
+    background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+  }
+  .emergency-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fca5a5;
+    font-weight: 700;
+    margin-bottom: 0.75rem !important;
+  }
+  .cta-section h2 {
+    color: #ffffff;
+    margin-bottom: 0.875rem;
+  }
+  .cta-section > .container > p:not(.emergency-label):not(.cta-nap) {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.05rem;
+    max-width: 540px;
+    margin: 0 auto 2rem;
+  }
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .cta-nap {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    margin: 0 !important;
+  }
+</style>

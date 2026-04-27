@@ -1,17 +1,283 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import LocationCard from '../components/LocationCard.astro';
+import FAQ from '../components/FAQ.astro';
 
+const faqs = [
+  {
+    q: 'Does Altered Air offer same-day AC repair in Buckeye, AZ?',
+    a: 'Yes. We prioritize same-day service for AC repairs throughout Buckeye and the West Valley. When temperatures climb past 110°F, a broken air conditioner is not a minor inconvenience — it is a health risk. Call <a href="tel:+17605941125">(760) 594-1125</a> and we will dispatch a technician as quickly as possible.'
+  },
+  {
+    q: 'Do you repair commercial refrigeration equipment?',
+    a: 'Absolutely. Commercial refrigeration is one of our core specialties. We service walk-in coolers, walk-in freezers, reach-in refrigerators, deli cases, ice machines, beverage coolers, VRF systems, and more. We understand that refrigeration downtime costs businesses money, so we respond fast — including 24/7 emergency service for food service operators, restaurants, and food processing facilities.'
+  },
+  {
+    q: 'What areas does Altered Air serve?',
+    a: 'Altered Air serves the entire West Valley including Buckeye, Goodyear, Queen Creek, Surprise, Avondale, Litchfield Park, Tolleson, Laveen, and Peoria. Our home base is in Buckeye, AZ, which means we can typically reach most West Valley locations within 30–60 minutes.'
+  },
+  {
+    q: 'Is Altered Air available for emergency AC or refrigeration calls at night or on weekends?',
+    a: 'Yes — we offer 24-hour emergency service, 7 days a week, including holidays. John Rigo understands that AC failures in a Phoenix summer and refrigeration breakdowns for businesses do not happen on a 9-to-5 schedule. Call <a href="tel:+17605941125">(760) 594-1125</a> any time.'
+  },
+  {
+    q: 'Does Altered Air provide free estimates?',
+    a: 'Yes. We offer free quotes on equipment installations and new service agreements. Diagnostic fees may apply for repair calls, and we will always explain any charges before doing work. No surprise pricing — ever.'
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Commercial Refrigeration & AC Repair in Buckeye, AZ | Altered Air | (760) 594-1125"
+  description="Altered Air delivers commercial refrigeration repair, AC repair, and heating service in Buckeye, AZ and across the West Valley. Same-day and 24/7 emergency service. Call (760) 594-1125."
+  canonical="/"
+>
+  <!-- Emergency Banner -->
+  <div class="emergency-banner">
+    <div class="container">
+      <strong>&#128680; Phoenix summers hit 115°F+ — no AC is a health emergency.</strong>
+      Altered Air is on call 24/7. <a href="tel:+17605941125">Call now: (760) 594-1125</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Buckeye, AZ's Commercial Refrigeration &amp; AC Specialists</div>
+      <h1>Commercial Refrigeration &amp; AC Repair in Buckeye, AZ</h1>
+      <p class="hero-lead">
+        John Rigo and the Altered Air team deliver fast, reliable AC repair, commercial refrigeration service,
+        and heating solutions across Buckeye and the entire West Valley. Honest pricing. No surprises.
+        On time, every time.
+      </p>
+      <div class="hero-cta">
+        <a href="tel:+17605941125" class="btn-primary btn-lg">&#128222; Call (760) 594-1125</a>
+        <a href="/contact" class="btn-outline-white btn-lg">Get a Free Quote</a>
+      </div>
+      <p class="hero-nap">
+        <a href="/locations/buckeye-az">1009 E Narramore Ave, Buckeye, AZ 85326</a>
+        &bull; Serving the West Valley since day one
+      </p>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <span class="trust-item"><span class="icon">✓</span> Same-Day Service</span>
+        <span class="trust-item"><span class="icon">✓</span> 24/7 Emergency Calls</span>
+        <span class="trust-item"><span class="icon">✓</span> Commercial &amp; Residential</span>
+        <span class="trust-item"><span class="icon">✓</span> Transparent Pricing</span>
+        <span class="trust-item"><span class="icon">✓</span> Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Overview -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>Full-Service HVAC &amp; Commercial Refrigeration</h2>
+        <p>
+          From a broken AC unit in the middle of a Buckeye summer to a walk-in cooler failure threatening a
+          restaurant's inventory — Altered Air handles it all. We serve homeowners, small businesses, restaurants,
+          warehouses, and food processors throughout the West Valley.
+        </p>
+      </div>
+      <div class="grid-3">
+        <ServiceCard
+          title="Commercial Refrigeration"
+          description="Walk-in cooler and freezer repair, installation, and design. Ice machines, deli cases, beverage coolers, VRF systems, Sub-Zero units, and more. Fast response to protect your inventory and keep your business running."
+          href="/services/refrigeration-repair"
+          icon="❄️"
+          highlight={true}
+        />
+        <ServiceCard
+          title="Air Conditioning"
+          description="Same-day AC repair, new system installation, and seasonal maintenance for homes and commercial properties across Buckeye and the West Valley. Central AC, mini splits, packaged units, heat pumps, and zoned HVAC."
+          href="/services/ac-repair"
+          icon="🌬️"
+          highlight={true}
+        />
+        <ServiceCard
+          title="Heating"
+          description="Furnace installation and repair, heat pump service, emergency heating calls, and smart thermostat installation. Keep your property warm and efficient through the winter months."
+          href="/services/heating"
+          icon="🔥"
+        />
+      </div>
+
+      <div style="margin-top: 2rem;" class="grid-3">
+        <ServiceCard
+          title="Emergency Repair — 24/7"
+          description="AC or refrigeration failure at 2am? We're available. When the Phoenix heat or a full walk-in freezer demands immediate attention, call Altered Air and we'll respond fast."
+          href="/services/emergency-repair"
+          icon="🚨"
+          highlight={true}
+        />
+        <ServiceCard
+          title="AC &amp; Refrigeration Maintenance"
+          description="Prevent expensive breakdowns with routine maintenance. We offer seasonal AC tune-ups, condenser coil cleaning, filter replacement, and comprehensive refrigeration system assessments."
+          href="/services/ac-maintenance"
+          icon="🔩"
+        />
+        <ServiceCard
+          title="Refrigeration Design &amp; Installation"
+          description="Planning a new commercial kitchen, cold storage room, or walk-in cooler? John Rigo has the expertise to design and install refrigeration systems built for the Arizona climate and your business needs."
+          href="/services/refrigeration-installation"
+          icon="📐"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Altered Air -->
+  <section class="bg-gray">
+    <div class="container">
+      <div class="content-two-col">
+        <div>
+          <h2>Why West Valley Businesses &amp; Homeowners Choose Altered Air</h2>
+          <p>
+            When you call Altered Air, you get John Rigo — the owner, the lead technician, and the person
+            responsible for getting your system running right. We are not a large corporation that hands you
+            off to whoever is available. We are West Valley locals serving West Valley locals, and our reputation
+            depends on every single job we do.
+          </p>
+          <p>
+            Commercial refrigeration downtime costs you money. A broken AC in a Buckeye summer is dangerous.
+            We understand the urgency, and we build our entire business around responding to it.
+          </p>
+
+          <ul class="feature-list" style="margin-top: 1.5rem;">
+            <li><strong>Same-day AC repair</strong> throughout Buckeye and surrounding West Valley cities</li>
+            <li><strong>24/7 emergency service</strong> for AC and commercial refrigeration</li>
+            <li><strong>Transparent, upfront pricing</strong> — no surprise charges</li>
+            <li><strong>Commercial refrigeration specialists</strong> — walk-in coolers, freezers, food-grade systems</li>
+            <li><strong>Residential and commercial</strong> HVAC installation and maintenance</li>
+            <li><strong>Heating systems</strong> — furnaces, heat pumps, smart thermostats</li>
+            <li>Serving <strong>Buckeye, Goodyear, Queen Creek, Surprise, Avondale, Tolleson</strong>, and more</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="highlight-box" style="margin-bottom: 1.5rem;">
+            <h3>Emergency AC &amp; Refrigeration</h3>
+            <p>
+              No air conditioning in 115°F heat is a medical emergency. A failing walk-in cooler
+              threatens thousands in inventory. Don't wait — call us right now.
+            </p>
+            <a href="tel:+17605941125" class="phone">(760) 594-1125</a>
+            <a href="tel:+17605941125" class="btn-primary">Call Now — 24/7</a>
+          </div>
+
+          <div class="card">
+            <h3>About John Rigo</h3>
+            <p>
+              John Rigo is the owner and lead technician at Altered Air, based in Buckeye, AZ.
+              With hands-on experience in commercial refrigeration design and installation, AC systems,
+              and heating, John brings the expertise of a large company with the accountability of a
+              small, local business. When you call Altered Air, you reach John — and John shows up.
+            </p>
+            <p>
+              As a Buckeye resident and West Valley local, John built Altered Air on a straightforward
+              premise: do great work, be honest about pricing, and show up when you say you will.
+            </p>
+            <a href="/about" class="card-link">Meet the Team →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Section -->
+  <section>
+    <div class="container">
+      <div class="urgency-box">
+        <h3>&#128680; Phoenix Summer Heat Kills — Don't Wait on a Broken AC</h3>
+        <p>
+          Maricopa County averages more heat-related deaths than any other county in the United States.
+          When temperatures in Buckeye and the West Valley climb past 115°F, a failed air conditioner
+          is not just uncomfortable — it is life-threatening, especially for elderly residents, children,
+          and pets. Altered Air offers <a href="/services/emergency-repair">24-hour emergency AC repair</a>
+          so you are never left without cooling in the Arizona heat.
+        </p>
+      </div>
+
+      <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>AC Not Cooling?</h3>
+          <p>If your AC is running but not keeping up with the heat, don't wait for a complete failure. Common causes include low refrigerant, a dirty condenser coil, or a failing compressor — all things we diagnose and fix same-day.</p>
+          <a href="/services/ac-repair" class="card-link">AC Repair →</a>
+        </div>
+        <div class="card">
+          <h3>Commercial Refrigeration Down?</h3>
+          <p>Every hour your walk-in cooler or freezer is down, your inventory is at risk. Altered Air responds to commercial refrigeration emergencies around the clock. We serve restaurants, grocery stores, food processors, and warehouses.</p>
+          <a href="/services/refrigeration-repair" class="card-link">Refrigeration Repair →</a>
+        </div>
+        <div class="card">
+          <h3>New System Needed?</h3>
+          <p>Sometimes a repair is not enough. If your system is aging or undersized for our brutal summers, John can evaluate your options and recommend a new installation that fits your budget and performs reliably for years.</p>
+          <a href="/services/ac-installation" class="card-link">AC Installation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="bg-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>AC &amp; Refrigeration Service Across the West Valley</h2>
+        <p>
+          Based in Buckeye, AZ, Altered Air serves communities throughout the West Valley and surrounding
+          metropolitan Phoenix area. Whether you are in an industrial warehouse along Tolleson's I-10 corridor,
+          a new construction home in Laveen, or a commercial property in Goodyear — we are close by and
+          ready to respond.
+        </p>
+      </div>
+      <div class="grid-3">
+        <LocationCard
+          city="Buckeye"
+          description="Our home base. We serve Verrado, Tartesso, the Sun Valley Parkway industrial corridor, and all of Buckeye's rapidly growing residential and commercial areas."
+          href="/locations/buckeye-az"
+        />
+        <LocationCard
+          city="Goodyear"
+          description="Serving PebbleCreek, Estrella, Palm Valley, the Goodyear Ballpark area, and corporate and industrial parks along the I-10 corridor."
+          href="/locations/goodyear-az"
+        />
+        <LocationCard
+          city="Queen Creek"
+          description="Serving Hastings Farms, the San Tan area, Queen Creek Marketplace, agricultural operations, and the area's rapidly growing residential communities."
+          href="/locations/queen-creek-az"
+        />
+        <LocationCard
+          city="Surprise"
+          description="Serving Sun City Grand, Marley Park, the Bell Road business corridor, and Surprise's extensive retirement and residential communities."
+          href="/locations/surprise-az"
+        />
+        <LocationCard
+          city="Tolleson"
+          description="Specialized commercial refrigeration for Tolleson's heavy industrial and food processing district. Walk-in cooler and freezer service for warehouses and food facilities along I-10."
+          href="/locations/tolleson-az"
+        />
+        <LocationCard
+          city="Avondale, Laveen &amp; More"
+          description="Also serving Avondale, Litchfield Park, Laveen, Peoria, and surrounding West Valley communities. Call to confirm service in your area."
+          href="/locations/avondale-az"
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    heading="Call Altered Air Today — Fast, Honest HVAC Service"
+    subtext="Same-day AC repair. 24/7 emergency service. Commercial refrigeration specialists. Serving Buckeye, AZ and the entire West Valley."
+  />
+
+  <FAQ faqs={faqs} heading="Common Questions About Altered Air" />
+
+</Layout>

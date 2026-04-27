@@ -1,0 +1,67 @@
+---
+export interface Props {
+  city: string;
+  state?: string;
+  description: string;
+  href: string;
+}
+
+const { city, state = 'AZ', description, href } = Astro.props;
+---
+
+<div class="location-card">
+  <div class="location-card-header">
+    <span class="location-pin" aria-hidden="true">📍</span>
+    <h3>{city}, {state}</h3>
+  </div>
+  <p>{description}</p>
+  <a href={href} class="location-card-link">View Service Area →</a>
+</div>
+
+<style>
+  .location-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+  .location-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+    transform: translateY(-2px);
+    z-index: 1;
+  }
+  .location-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-shrink: 0;
+  }
+  .location-pin { font-size: 1.1rem; }
+  .location-card h3 {
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 0;
+  }
+  .location-card p {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .location-card-link {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.88rem;
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 1rem;
+    display: block;
+  }
+  .location-card-link:hover { text-decoration: underline; }
+</style>

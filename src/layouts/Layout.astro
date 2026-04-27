@@ -1,0 +1,117 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const { title, description, canonical, ogTitle, ogDescription } = Astro.props;
+const siteUrl = 'https://www.alteredair.com';
+const fullCanonical = `${siteUrl}${canonical}`;
+const ogTitleFinal = ogTitle ?? title;
+const ogDescFinal = ogDescription ?? description;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": ["HVACBusiness", "LocalBusiness"],
+  "name": "Altered Air",
+  "description": "Commercial refrigeration and AC repair serving Buckeye, AZ and the West Valley. Owner and lead technician: John Rigo.",
+  "url": siteUrl,
+  "telephone": "+17605941125",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1009 E Narramore Ave",
+    "addressLocality": "Buckeye",
+    "addressRegion": "AZ",
+    "postalCode": "85326",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 33.3706,
+    "longitude": -112.5837
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "priceRange": "$$",
+  "areaServed": [
+    {"@type": "City", "name": "Buckeye", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Goodyear", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Queen Creek", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Surprise", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Avondale", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Litchfield Park", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Tolleson", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Laveen", "addressRegion": "AZ"},
+    {"@type": "City", "name": "Peoria", "addressRegion": "AZ"}
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "John Rigo"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "HVAC & Refrigeration Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AC Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AC Installation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AC Maintenance"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Emergency 24-Hour AC Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Refrigeration Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Walk-in Cooler Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Walk-in Freezer Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Refrigeration Installation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Heating Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Furnace Installation"}}
+    ]
+  }
+});
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={fullCanonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={ogTitleFinal} />
+  <meta property="og:description" content={ogDescFinal} />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Altered Air" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={ogTitleFinal} />
+  <meta name="twitter:description" content={ogDescFinal} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Schema -->
+  <script type="application/ld+json" set:html={schema} />
+</head>
+<body>
+  <Header />
+  <main id="main-content">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

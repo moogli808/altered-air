@@ -1,0 +1,101 @@
+---
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
+export interface Props {
+  faqs: FAQItem[];
+  heading?: string;
+}
+
+const { faqs, heading = 'Frequently Asked Questions' } = Astro.props;
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.a
+    }
+  }))
+});
+---
+
+<script type="application/ld+json" set:html={faqSchema} />
+
+<section class="faq-section">
+  <div class="container">
+    <h2>{heading}</h2>
+    <div class="faq-list">
+      {faqs.map(faq => (
+        <details class="faq-item">
+          <summary class="faq-question">{faq.q}</summary>
+          <div class="faq-answer">
+            <p set:html={faq.a} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 4rem 0;
+    background: var(--gray-50);
+  }
+  .faq-section h2 {
+    margin-bottom: 2rem;
+  }
+  .faq-list {
+    max-width: 820px;
+  }
+  .faq-item {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background: var(--white);
+    overflow: hidden;
+  }
+  .faq-question {
+    padding: 1.1rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.97rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.15s;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: var(--orange);
+    flex-shrink: 0;
+    font-weight: 400;
+    line-height: 1;
+  }
+  details[open] .faq-question {
+    background: var(--gray-50);
+  }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-question:hover { background: var(--gray-50); }
+  .faq-answer {
+    padding: 1rem 1.5rem 1.25rem;
+    border-top: 1px solid var(--gray-200);
+  }
+  .faq-answer p {
+    color: var(--gray-700);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,334 @@
+---
+const phone = '(760) 594-1125';
+const phoneHref = 'tel:+17605941125';
+
+const services = [
+  { label: 'AC Repair', href: '/services/ac-repair' },
+  { label: 'AC Installation', href: '/services/ac-installation' },
+  { label: 'AC Maintenance', href: '/services/ac-maintenance' },
+  { label: 'Emergency Repair', href: '/services/emergency-repair' },
+  { label: 'Refrigeration Repair', href: '/services/refrigeration-repair' },
+  { label: 'Refrigeration Installation', href: '/services/refrigeration-installation' },
+  { label: 'Refrigeration Design', href: '/services/refrigeration-design' },
+  { label: 'Refrigeration Maintenance', href: '/services/refrigeration-maintenance' },
+  { label: 'Heating', href: '/services/heating' },
+];
+
+const locations = [
+  { label: 'Buckeye', href: '/locations/buckeye-az' },
+  { label: 'Goodyear', href: '/locations/goodyear-az' },
+  { label: 'Queen Creek', href: '/locations/queen-creek-az' },
+  { label: 'Surprise', href: '/locations/surprise-az' },
+  { label: 'Avondale', href: '/locations/avondale-az' },
+  { label: 'Litchfield Park', href: '/locations/litchfield-park-az' },
+  { label: 'Tolleson', href: '/locations/tolleson-az' },
+  { label: 'Laveen', href: '/locations/laveen-az' },
+  { label: 'Peoria', href: '/locations/peoria-az' },
+];
+---
+
+<header class="site-header">
+  <!-- Top bar -->
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <span class="header-tagline">West Valley's Commercial Refrigeration &amp; AC Specialists — Available 24/7</span>
+      <a href={phoneHref} class="header-phone">{phone}</a>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="main-nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="Altered Air — Home">
+        <span class="logo-name">Altered Air</span>
+        <span class="logo-tagline">Refrigeration &amp; AC</span>
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Nav links -->
+      <ul class="nav-links" id="nav-links" role="list">
+        <!-- Services dropdown -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Services <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="dropdown" role="list">
+            {services.map(s => (
+              <li><a href={s.href} class="dropdown-link">{s.label}</a></li>
+            ))}
+          </ul>
+        </li>
+
+        <!-- Locations dropdown -->
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Locations <span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="dropdown" role="list">
+            {locations.map(l => (
+              <li><a href={l.href} class="dropdown-link">{l.label}</a></li>
+            ))}
+          </ul>
+        </li>
+
+        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+
+        <!-- Mobile call button inside menu -->
+        <li class="nav-item mobile-cta-item">
+          <a href={phoneHref} class="btn-primary">Call {phone}</a>
+        </li>
+      </ul>
+
+      <!-- Desktop sticky CTA -->
+      <a href={phoneHref} class="header-cta-btn" aria-label={`Call Altered Air at ${phone}`}>
+        &#128222; {phone}
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const btn = document.getElementById('menu-btn');
+  const nav = document.getElementById('nav-links');
+
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+
+  // Dropdown toggles (for desktop hover and mobile tap)
+  document.querySelectorAll('.dropdown-btn').forEach(dropBtn => {
+    dropBtn.addEventListener('click', (e) => {
+      const parent = (e.currentTarget as HTMLElement).closest('.has-dropdown');
+      const isOpen = parent?.classList.toggle('open');
+      (e.currentTarget as HTMLElement).setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  // Close nav when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target || !(e.target as HTMLElement).closest('.site-header')) {
+      nav?.classList.remove('open');
+      btn?.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.has-dropdown').forEach(el => el.classList.remove('open'));
+    }
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  /* Top bar */
+  .header-top {
+    background: #071524;
+    padding: 0.5rem 0;
+    font-size: 0.82rem;
+  }
+  .header-top-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .header-tagline { color: rgba(255,255,255,0.7); }
+  .header-phone {
+    color: #f97316;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .header-phone:hover { text-decoration: underline; }
+
+  /* Main nav */
+  .main-nav {
+    background: #0d2137;
+    padding: 0;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    gap: 0;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    margin-right: auto;
+    line-height: 1.1;
+    padding: 0.5rem 0;
+  }
+  .logo-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .logo-tagline {
+    font-size: 0.65rem;
+    color: #f97316;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2rem;
+    height: 1.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 1rem;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  /* Nav links */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #0d2137;
+    flex-direction: column;
+    list-style: none;
+    padding: 0.5rem 0 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links.open { display: flex; }
+
+  @media (min-width: 1024px) {
+    .hamburger { display: none; }
+    .nav-links {
+      display: flex !important;
+      position: static;
+      flex-direction: row;
+      align-items: center;
+      background: none;
+      border: none;
+      padding: 0;
+      gap: 0.25rem;
+    }
+    .mobile-cta-item { display: none; }
+  }
+
+  /* Nav item / link */
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: block;
+    color: rgba(255,255,255,0.88);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: #f97316; text-decoration: none; }
+
+  @media (min-width: 1024px) {
+    .nav-link { padding: 0.5rem 0.75rem; width: auto; }
+  }
+
+  .caret { font-size: 0.7rem; }
+
+  /* Dropdown */
+  .dropdown {
+    display: none;
+    list-style: none;
+    padding: 0.25rem 0;
+    background: #1a3a5c;
+    min-width: 220px;
+  }
+
+  @media (min-width: 1024px) {
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      z-index: 200;
+    }
+    .has-dropdown:hover .dropdown { display: block; }
+  }
+
+  .has-dropdown.open .dropdown { display: block; }
+
+  .dropdown-link {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    padding: 0.6rem 1.5rem;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .dropdown-link:hover {
+    background: rgba(249,115,22,0.15);
+    color: #f97316;
+    text-decoration: none;
+  }
+
+  /* Mobile CTA */
+  .mobile-cta-item {
+    padding: 0.5rem 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Desktop CTA button */
+  .header-cta-btn {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .header-cta-btn {
+      display: inline-block;
+      background: #f97316;
+      color: #ffffff !important;
+      padding: 0.6rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none !important;
+      white-space: nowrap;
+      margin-left: 0.75rem;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .header-cta-btn:hover { background: #ea580c; }
+  }
+</style>

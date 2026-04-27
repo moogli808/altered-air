@@ -1,0 +1,74 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  href: string;
+  icon?: string;
+  highlight?: boolean;
+}
+
+const { title, description, href, icon = '🔧', highlight = false } = Astro.props;
+---
+
+<div class={`service-card${highlight ? ' service-card--highlight' : ''}`}>
+  <div class="service-card-icon" aria-hidden="true">{icon}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a href={href} class="service-card-link">Learn More →</a>
+</div>
+
+<style>
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    /* height: 100% fills the grid cell so all cards in a row are equal height */
+    height: 100%;
+    position: relative;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    /* lift above sibling cards so the shadow doesn't get clipped */
+    z-index: 1;
+  }
+  .service-card--highlight {
+    border-color: var(--orange);
+    border-width: 2px;
+  }
+  .service-card-icon {
+    font-size: 2.25rem;
+    margin-bottom: 0.875rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+  .service-card p {
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+    /* No flex:1 here — let margin-top:auto on the link handle bottom-pinning */
+    margin-bottom: 0;
+  }
+  .service-card-link {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    /* auto margin pushes the link to the card bottom in every card height */
+    margin-top: auto;
+    /* replaces the removed margin-bottom on <p> */
+    padding-top: 1.25rem;
+    display: block;
+  }
+  .service-card-link:hover { text-decoration: underline; }
+</style>

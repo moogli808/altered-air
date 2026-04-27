@@ -1,0 +1,229 @@
+---
+const phone = '(760) 594-1125';
+const phoneHref = 'tel:+17605941125';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="container footer-grid">
+      <!-- Brand / NAP -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <span class="logo-name">Altered Air</span>
+          <span class="logo-tagline">Commercial Refrigeration &amp; AC</span>
+        </a>
+        <address class="nap-block">
+          <strong>Altered Air</strong><br />
+          1009 E Narramore Ave<br />
+          Buckeye, AZ 85326<br />
+          <a href={phoneHref}>{phone}</a>
+        </address>
+        <p class="footer-hours">
+          <strong>24/7 Emergency Service</strong><br />
+          Available day and night — call anytime
+        </p>
+        <p class="footer-license">Contractor License: Pending</p>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Our Services</h3>
+        <ul class="footer-links">
+          <li><a href="/services/ac-repair">AC Repair</a></li>
+          <li><a href="/services/ac-installation">AC Installation</a></li>
+          <li><a href="/services/ac-maintenance">AC Maintenance</a></li>
+          <li><a href="/services/emergency-repair">Emergency Repair</a></li>
+          <li><a href="/services/refrigeration-repair">Refrigeration Repair</a></li>
+          <li><a href="/services/refrigeration-installation">Refrigeration Installation</a></li>
+          <li><a href="/services/refrigeration-design">Refrigeration Design</a></li>
+          <li><a href="/services/refrigeration-maintenance">Refrigeration Maintenance</a></li>
+          <li><a href="/services/heating">Heating</a></li>
+        </ul>
+      </div>
+
+      <!-- Locations -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Service Areas</h3>
+        <ul class="footer-links">
+          <li><a href="/locations/buckeye-az">Buckeye, AZ</a></li>
+          <li><a href="/locations/goodyear-az">Goodyear, AZ</a></li>
+          <li><a href="/locations/queen-creek-az">Queen Creek, AZ</a></li>
+          <li><a href="/locations/surprise-az">Surprise, AZ</a></li>
+          <li><a href="/locations/avondale-az">Avondale, AZ</a></li>
+          <li><a href="/locations/litchfield-park-az">Litchfield Park, AZ</a></li>
+          <li><a href="/locations/tolleson-az">Tolleson, AZ</a></li>
+          <li><a href="/locations/laveen-az">Laveen, AZ</a></li>
+          <li><a href="/locations/peoria-az">Peoria, AZ</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Need Service Now?</h3>
+        <p class="footer-cta-text">
+          Call John Rigo directly. Same-day AC repair and 24/7 emergency refrigeration service across the West Valley.
+        </p>
+        <a href={phoneHref} class="footer-phone-btn">{phone}</a>
+        <a href="/contact" class="footer-quote-link">Request a Free Quote →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; {year} Altered Air. All rights reserved. | Buckeye, AZ 85326</p>
+      <nav class="footer-bottom-nav" aria-label="Footer">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/locations/buckeye-az">Buckeye</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #071524;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .footer-main { padding: 4rem 0 3rem; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+  .logo-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .logo-tagline {
+    font-size: 0.65rem;
+    color: #f97316;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .nap-block {
+    font-style: normal;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+  .nap-block strong { color: #ffffff; }
+  .nap-block a { color: #f97316; text-decoration: none; }
+  .nap-block a:hover { text-decoration: underline; }
+
+  .footer-hours {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .footer-hours strong { color: #ffffff; }
+
+  .footer-license {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0;
+  }
+
+  .footer-heading {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #f97316;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+  .footer-links li { margin-bottom: 0.5rem; }
+  .footer-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: #f97316; text-decoration: none; }
+
+  .footer-cta-text {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .footer-phone-btn {
+    display: block;
+    background: #f97316;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none !important;
+    margin-bottom: 0.75rem;
+    transition: background 0.2s;
+  }
+  .footer-phone-btn:hover { background: #ea580c; }
+
+  .footer-quote-link {
+    display: block;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+  .footer-quote-link:hover { color: #ffffff; text-decoration: underline; }
+
+  /* Bottom bar */
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.25rem 0;
+  }
+  .footer-bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+  }
+  .footer-bottom-nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .footer-bottom-nav a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+  }
+  .footer-bottom-nav a:hover { color: rgba(255,255,255,0.85); }
+</style>
